@@ -1,0 +1,33 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Todo App</title>
+    </head>
+    <body>
+        <h1>To-Do App</h1>
+        <form action="/add", method="post" >
+            <div> 
+                <label for="title">Todo Title</label>
+                <input type="text" for="title"placeholder="Enter todo...">
+                <br>
+                <button type="submit">Add</button>
+            </div> 
+        </form>
+
+    {% for todo in todo_list %}
+
+    <p> {{ todo.id }} | {{ todo.title }}</p>
+    {% if todo.complete == False %}
+    <span> Not Completed </span>
+    {% else %}
+    <span> Completed </span>
+    {% endif %}
+
+    <a href="/update/{{ todo.id }}">Update</a>
+    <a href="/delete/{{ todo.id }}">delete</a>
+    {% endfor %}
+
+    </body>
+</html>
+
